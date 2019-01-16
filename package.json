@@ -9,12 +9,13 @@
 		"gatsby-plugin-manifest": "^2.0.5",
 		"gatsby-plugin-offline": "^2.0.5",
 		"gatsby-plugin-react-helmet": "^3.0.0",
-		"gatsby-plugin-sharp": "^2.0.13",
+		"gatsby-plugin-sharp": "^2.0.17",
 		"gatsby-source-filesystem": "^2.0.4",
 		"gatsby-transformer-sharp": "^2.1.4",
 		"react": "^16.5.1",
 		"react-dom": "^16.5.1",
-		"react-helmet": "^5.2.0"
+		"react-helmet": "^5.2.0",
+		"sharp": "^0.21.2"
 	},
 	"keywords": [
 		"gatsby"
