@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import { Link } from 'gatsby';
 import { graphql } from 'gatsby';
 // import Img from 'gatsby-image';
@@ -7,18 +7,54 @@ import ImageCarousel from '../components/image-carousel';
 import Layout from '../components/layout';
 
 const DormImages = (props) => {
-	const Images = {
-		dormImages: props.data.dormImages,
-		gardenImages: props.data.gardenImages,
-		kingImages: props.data.kingImages,
-		queenImages: props.data.queenImages,
-		sharedImages: props.data.sharedImages,
-		patioImages: props.data.patioImages
+	const [ room, setRoom ] = useState(props.data.dormImages);
+	// before hooks state for images for multiple image carousel
+	// const Images = {
+	// 	dormImages: props.data.dormImages,
+	// 	gardenImages: props.data.gardenImages,
+	// 	kingImages: props.data.kingImages,
+	// 	queenImages: props.data.queenImages,
+	// 	sharedImages: props.data.sharedImages,
+	// 	patioImages: props.data.patioImages
+	// };
+	const whichRoom = (event) => {
+		switch (event.target.innerText) {
+			case 'Dorm':
+				console.log(event.target.innerText, room);
+				setRoom(props.data.dormImages);
+				break;
+			case 'King':
+				setRoom(props.data.kingImages);
+				console.log(event.target.innerText);
+				break;
+			case 'Garden':
+				setRoom(props.data.gardenImages);
+				console.log(event.target.innerText);
+				break;
+			case 'Shared':
+				setRoom(props.data.sharedImages);
+				console.log(event.target.innerText);
+				break;
+			case 'Patio':
+				setRoom(props.data.patioImages);
+				console.log(event.target.innerText);
+				break;
+			default:
+				console.log('Does not work, try again.');
+		}
 	};
 	return (
 		<Layout>
-			<p>Dorm Images</p>
-			<ImageCarousel images={Images.dormImages} />
+			<ul onClick={whichRoom}>
+				<li>Dorm</li>
+				<li>King</li>
+				<li>Garden</li>
+				<li>Shared</li>
+				<li>Patio</li>
+			</ul>
+			<p>Room Images</p>
+			<ImageCarousel images={room} />
+			{/* Several rooms carousel implementation */}
 			{/* <p>Dorm Images</p>
 			{props.data.dormImages.edges.map((image) => {
 				// console.log(images);
@@ -28,8 +64,14 @@ const DormImages = (props) => {
 			{props.data.kingImages.edges.map((image) => {
 				return <Img className="king" fluid={image.node.childImageSharp.fluid} />;
 			})} */}
-			<p>King Images</p>
+			{/* <p>King Images</p>
 			<ImageCarousel images={Images.kingImages} />
+			<p>Garden Images</p>
+			<ImageCarousel images={Images.gardenImages} />
+			<p>Shared Space</p>
+			<ImageCarousel images={Images.sharedImages} />
+			<p>Patio Images</p>
+			<ImageCarousel images={Images.patioImages} /> */}
 		</Layout>
 	);
 };

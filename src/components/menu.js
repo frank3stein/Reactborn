@@ -23,7 +23,7 @@ const MenuItems = () => {
 			<nav>
 				<ul
 					role="navigation"
-					class="hidden"
+					className="hidden"
 					style={{
 						display: 'none'
 					}}
