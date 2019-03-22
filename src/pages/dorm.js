@@ -54,7 +54,7 @@ const DormImages = (props) => {
 			</ul>
 			<p>Room Images</p>
 			<ImageCarousel images={room} />
-			{/* Several rooms carousel implementation */}
+			{/* Several rooms on screen at the same time carousel implementation */}
 			{/* <p>Dorm Images</p>
 			{props.data.dormImages.edges.map((image) => {
 				// console.log(images);
