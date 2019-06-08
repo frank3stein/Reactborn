@@ -1,91 +1,89 @@
-
-
-/* Menu. I already created this menu for a vanilla js version of the website first. So instead of rewriting it to css in js, I kept it.*/ 
+/* Menu. I already created this menu for a vanilla js version of the website first. So instead of rewriting it to css in js, I kept it.*/
 .menu-toggle {
-	width: 40px;
-	height: 30px;
-	position: absolute;
-	top: 10px;
-	right: 25px;
-	cursor: pointer;
+  width: 40px;
+  height: 30px;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  cursor: pointer;
 
-	&:hover {
-		& .one,
-		& .two,
-		& .three {
-			background: var(--secondaryColor);
-		}
-	}
+  &:hover {
+    & .one,
+    & .two,
+    & .three {
+      background: var(--secondaryColor);
+    }
+  }
 
-	&.on {
-		& .one {
-			transform: rotate(45deg) translate(7px, 7px);
-		}
+  &.on {
+    & .one {
+      transform: rotate(45deg) translate(7px, 7px);
+    }
 
-		& .two {
-			/* opacity: 0; */
-			width: 0;
-		}
+    & .two {
+      /* opacity: 0; */
+      width: 0;
+    }
 
-		& .three {
-			transform: rotate(-45deg) translate(8px, -10px);
-		}
-		/* &:hover {
+    & .three {
+      transform: rotate(-45deg) translate(8px, -10px);
+    }
+    /* &:hover {
               & .one, & .three{
                   background: var(--secondaryColor);
               }
           } */
-	}
+  }
 }
 
 .one,
 .two,
 .three {
-	width: 100%;
-	height: 5px;
-	background: white;
-	margin: 6px auto;
-	backface-visibility: hidden;
-	transition-duration: .4s;
+  width: 100%;
+  height: 5px;
+  background: white;
+  margin: 6px auto;
+  backface-visibility: hidden;
+  transition-duration: 0.4s;
 }
 
 nav ul {
-	margin: 0;
-	padding: 0;
-	font-family: Open Sans;
-	list-style: none;
-	margin: 4em auto;
-	text-align: center;
+  margin: 0;
+  padding: 0;
+  font-family: Open Sans;
+  list-style: none;
+  margin: 4em auto;
+  text-align: center;
 
-	&.hidden {
-		display: none;
-	}
-	& li {
-		& a {
-			transition-duration: 0.5s;
-			text-decoration: none;
-			color: white;
-			font-size: 3em;
-			line-height: 1.5;
-			width: 100%;
-			display: block;
-			&:hover {
-				color: var(--secondaryColor);
-				background-color: rgba(0, 0, 0, 0.5);
-			}
-		}
-	}
+  &.hidden {
+    display: none;
+  }
+  & li {
+    & a {
+      transition-duration: 0.5s;
+      text-decoration: none;
+      color: white;
+      font-size: 3em;
+      line-height: 1.5;
+      width: 100%;
+      display: block;
+      &:hover {
+        color: var(--secondaryColor);
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
 }
 
 .menu-section {
-	&.on {
-		z-index: 10;
-		width: 100%;
-		height: 100%;
-		display: block;
-		background-color: rgba(0, 0, 0, 0.5);
-		position: absolute;
-	}
+  &.on {
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+  }
 }
 
 /* Menu ends */

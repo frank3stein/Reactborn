@@ -14,19 +14,19 @@ import Img from 'gatsby-image';
  */
 
 const Image = () => (
-	<StaticQuery
-		query={graphql`
-			query {
-				dormImages: file(relativePath: { eq: "Dorm/dorm01.jpg" }) {
-					childImageSharp {
-						fluid(maxWidth: 600) {
-							...GatsbyImageSharpFluid
-						}
-					}
-				}
-			}
-		`}
-		render={(data) => <Img fluid={data.dormImages.childImageSharp.fluid} />}
-	/>
+  <StaticQuery
+    query={graphql`
+      query {
+        dormImages: file(relativePath: { eq: "Dorm/dorm01.jpg" }) {
+          childImageSharp {
+            fluid(maxWidth: 600) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    `}
+    render={data => <Img fluid={data.dormImages.childImageSharp.fluid} />}
+  />
 );
 export default Image;
