@@ -9,7 +9,7 @@ function BookNow() {
         display: 'block',
       }}
     >
-      Book now
+      <button>Book now</button>
     </Link>
   );
 }

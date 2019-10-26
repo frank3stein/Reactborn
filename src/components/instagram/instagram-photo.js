@@ -4,4 +4,4 @@ import Img from 'gatsby-image';
 
 function InstagramPhoto() {}
 
-const data = useStaticQuery(graphql``);
+// const data = useStaticQuery(graphql``);

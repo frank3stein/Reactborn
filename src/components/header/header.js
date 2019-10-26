@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import MenuItems from '../menu';
+import MenuItems from './menu';
 
 const Header = ({ siteTitle }) => (
   <div
@@ -30,7 +30,7 @@ const Header = ({ siteTitle }) => (
         </Link>
       </h1>
     </div>
-    <MenuItems />
+    {/* <MenuItems /> */}
   </div>
 );
 
