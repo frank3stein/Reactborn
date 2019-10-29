@@ -14,19 +14,27 @@ import Img from 'gatsby-image';
  */
 
 const Image = () => (
-	<StaticQuery
-		query={graphql`
-			query {
-				headerImage: file(relativePath: { eq: "Waterborn-s.png" }) {
-					childImageSharp {
-						fluid(maxWidth: 511) {
-							...GatsbyImageSharpFluid
-						}
-					}
-				}
-			}
-		`}
-		render={(data) => <Img fluid={data.headerImage.childImageSharp.fluid} />}
-	/>
+  <StaticQuery
+    query={graphql`
+      query {
+        headerImage: file(relativePath: { eq: "Waterborn-s.png" }) {
+          childImageSharp {
+            fluid(maxWidth: 511) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    `}
+    render={data => (
+      <Img
+        fluid={data.headerImage.childImageSharp.fluid}
+        style={{
+          left: 'calc(50% - 100px)',
+          width: '200px',
+        }}
+      />
+    )}
+  />
 );
 export default Image;

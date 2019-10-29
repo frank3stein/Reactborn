@@ -3,9 +3,7 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
-body {
-  margin: 0;
-}
+body,
 article,
 aside,
 details,
@@ -198,6 +196,14 @@ html {
   box-sizing: inherit;
 }
 body {
+  position: relative;
+  width: 100vw;
+  /* max-width: 100%; */
+  /* display: flex;
+  align-content: space-between;
+  flex-direction: column; */
+  margin: 0;
+  min-height: 100vh;
   color: hsla(0, 0%, 0%, 0.8);
   font-family: georgia, serif;
   font-weight: normal;

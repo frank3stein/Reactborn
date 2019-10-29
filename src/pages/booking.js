@@ -7,10 +7,12 @@ const BookingPage = () => (
   <Layout>
     <h1>Booking</h1>
     <div
-      style={{
-        display: 'flex',
-        alignItems: 'strech',
-      }}
+      style={
+        {
+          // display: 'flex',
+          // alignItems: 'strech',
+        }
+      }
     >
       <iframe
         title="Booking"

@@ -1,19 +1,40 @@
 import React, { useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import ImageCarousel from '../components/image-carousel';
+import ImageCarousel from './image-carousel';
+import styled from '@emotion/styled';
+import { css } from '@emotion/core';
 
-const roomNames = ['Dorm', 'King', 'Garden', 'Shared', 'Patio'];
-const roomsList = roomNames.map(room => <li key={room}>{room}</li>); // navigation list items
+const roomNames = ['Dorm', 'King', 'Queen', 'Garden', 'Shared', 'Patio'];
+const RoomButton = styled('button')`
+  min-height: 40px;
+  min-width: 40px;
+  &:hover {
+    color: red;
+  }
+  &:active {
+    color: yellow;
+  }
+`;
+const roomsList = roomNames.map(room => (
+  <RoomButton key={room}>{room}</RoomButton>
+)); // navigation list items
 console.log(roomsList);
 const RoomImages = () => {
-  const data = useStaticQuery(graphql`
+  const {
+    dormImages,
+    kingImages,
+    gardenImages,
+    queenImages,
+    sharedImages,
+    patioImages,
+  } = useStaticQuery(graphql`
     query {
       dormImages: allFile(filter: { name: { regex: "/dorm[0-9]{2}/" } }) {
         edges {
           node {
             childImageSharp {
-              fluid(maxWidth: 1000) {
-                ...GatsbyImageSharpFluid_tracedSVG
+              fluid(maxWidth: 2000) {
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
           }
@@ -23,8 +44,8 @@ const RoomImages = () => {
         edges {
           node {
             childImageSharp {
-              fluid(maxWidth: 1000) {
-                ...GatsbyImageSharpFluid
+              fluid(maxWidth: 2000) {
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
           }
@@ -34,8 +55,8 @@ const RoomImages = () => {
         edges {
           node {
             childImageSharp {
-              fluid(maxWidth: 1000) {
-                ...GatsbyImageSharpFluid
+              fluid(maxWidth: 2000) {
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
           }
@@ -45,8 +66,8 @@ const RoomImages = () => {
         edges {
           node {
             childImageSharp {
-              fluid(maxWidth: 1000) {
-                ...GatsbyImageSharpFluid
+              fluid(maxWidth: 2000) {
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
           }
@@ -56,8 +77,8 @@ const RoomImages = () => {
         edges {
           node {
             childImageSharp {
-              fluid(maxWidth: 1000) {
-                ...GatsbyImageSharpFluid
+              fluid(maxWidth: 2000) {
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
           }
@@ -67,8 +88,8 @@ const RoomImages = () => {
         edges {
           node {
             childImageSharp {
-              fluid(maxWidth: 1000) {
-                ...GatsbyImageSharpFluid
+              fluid(maxWidth: 2000) {
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
           }
@@ -76,27 +97,31 @@ const RoomImages = () => {
       }
     }
   `);
-  const [room, setRoom] = useState(data.dormImages); //Default state is set here
+  const [room, setRoom] = useState(dormImages); //Default state is set here
   const whichRoom = event => {
     switch (event.target.innerText) {
       case 'Dorm':
         console.log(event.target.innerText, room);
-        setRoom(data.dormImages);
+        setRoom(dormImages);
         break;
       case 'King':
-        setRoom(data.kingImages);
+        setRoom(kingImages);
+        console.log(event.target.innerText);
+        break;
+      case 'Queen':
+        setRoom(queenImages);
         console.log(event.target.innerText);
         break;
       case 'Garden':
-        setRoom(data.gardenImages);
+        setRoom(gardenImages);
         console.log(event.target.innerText);
         break;
       case 'Shared':
-        setRoom(data.sharedImages);
+        setRoom(sharedImages);
         console.log(event.target.innerText);
         break;
       case 'Patio':
-        setRoom(data.patioImages);
+        setRoom(patioImages);
         console.log(event.target.innerText);
         break;
       default:
@@ -104,11 +129,13 @@ const RoomImages = () => {
     }
   };
   return (
-    <div>
-      <ul onClick={whichRoom}>{roomsList}</ul>
+    <>
+      <ul onClick={whichRoom} css={css``}>
+        {roomsList}
+      </ul>
       <p>Room Images</p>
       <ImageCarousel images={room} />
-    </div>
+    </>
   );
 };
 

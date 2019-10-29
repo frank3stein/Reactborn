@@ -12,12 +12,12 @@ function InstagramFeed() {
               node {
                 id
                 likes
-                comments
-                mediaType
-                preview
-                original
-                timestamp
-                caption
+                # comments
+                # mediaType
+                # preview
+                # original
+                # timestamp
+                # caption
                 localFile {
                   childImageSharp {
                     fixed(width: 150, height: 150) {
@@ -42,12 +42,24 @@ function InstagramFeed() {
       `}
       render={data => (
         <>
-          {data.allInstaNode.edges.map((edge, index) => (
-            <Img
-              fixed={edge.node.localFile.childImageSharp.fixed}
-              key={index}
-            />
-          ))}
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+            }}
+          >
+            <article>
+              {data.allInstaNode.edges.map((edge, index) => (
+                <Img
+                  fixed={edge.node.localFile.childImageSharp.fixed}
+                  key={index}
+                />
+              ))}
+            </article>
+            <a href="https://www.instagram.com/waterbornbali/" target="_blank">
+              See more at Instagram.
+            </a>
+          </div>
         </>
       )}
     />

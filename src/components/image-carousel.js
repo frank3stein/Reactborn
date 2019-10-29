@@ -1,5 +1,9 @@
 import React from 'react';
-import Img from 'gatsby-image';
+import image from 'gatsby-image';
+import styled from '@emotion/styled-base';
+import { css } from '@emotion/core';
+
+const Img = styled(image)``;
 
 class ImageCarousel extends React.Component {
   constructor(props) {
@@ -59,9 +63,10 @@ class ImageCarousel extends React.Component {
     );
     return (
       <div
-        style={{
-          position: 'relative',
-        }}
+        css={css`
+          position: relative;
+          flex-grow: 1;
+        `}
       >
         <Img
           fluid={
@@ -78,15 +83,16 @@ class ImageCarousel extends React.Component {
 
 const LeftArrow = ({ handleClick, glyph }) => (
   <div
-    style={{
-      color: '#14B6D4',
-      cursor: 'pointer',
-      fontSize: '2rem',
-      position: 'absolute',
-      top: '50%',
-      left: '1rem',
-      //   height: '100%',
-    }}
+    css={css`
+      color: #14b6d4;
+      cursor: pointer;
+      font-size: 2rem;
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+      min-height: 40px;
+      min-width: 40px;
+    `}
     onClick={handleClick}
   >
     {glyph}
@@ -95,15 +101,16 @@ const LeftArrow = ({ handleClick, glyph }) => (
 
 const RightArrow = ({ handleClick, glyph }) => (
   <div
-    style={{
-      color: '#14B6D4',
-      cursor: 'pointer',
-      fontSize: '2rem',
-      position: 'absolute',
-      top: '50%',
-      right: '1rem',
-      minHeight: '40px',
-    }}
+    css={css`
+      color: #14b6d4;
+      cursor: pointer;
+      font-size: 2rem;
+      position: absolute;
+      top: 50%;
+      right: 1rem;
+      min-height: 40px;
+      min-width: 40px;
+    `}
     onClick={handleClick}
   >
     {glyph}
