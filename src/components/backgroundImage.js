@@ -32,12 +32,12 @@ const backgroundImage = ({ className }) => {
       }}
       fluid={imageData}
     >
-      <BookingButton
+      {/* <BookingButton
         style={{
           position: 'absolute',
           bottom: '0',
         }}
-      />
+      /> */}
     </BackgroundImage>
   );
 };
