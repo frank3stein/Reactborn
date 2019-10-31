@@ -157,19 +157,19 @@ const ContactForm = () => {
               label="First Name"
               name="firstName"
               type="text"
-              placeholder="Alican"
+              placeholder="John"
             />
             <MyTextInput
               label="Last Name"
               name="lastName"
               type="text"
-              placeholder="Kalav"
+              placeholder="Doe"
             />
             <MyTextInput
               label="Email Address"
               name="email"
               type="email"
-              placeholder="alicankalav@gmail.com"
+              placeholder="john.doe@gmail.com"
             />
             <MyTextArea
               label="Message"

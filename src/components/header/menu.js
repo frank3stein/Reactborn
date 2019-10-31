@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './menu.css';
 import { Link } from 'gatsby';
 
-const menuItems = ['Home', 'Rooms', 'Contact'];
+const menuItems = ['Home', 'Rooms', 'Booking', 'About', 'Contact'];
 
 const MenuItems = () => {
   const [toggle, setToggle] = useState(false);
