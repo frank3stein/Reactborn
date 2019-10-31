@@ -13,7 +13,7 @@ import Img from 'gatsby-image';
  * - `StaticQuery`: https://gatsby.app/staticquery
  */
 
-const Image = () => (
+const Image = ({ alt }) => (
   <StaticQuery
     query={graphql`
       query {
@@ -33,6 +33,7 @@ const Image = () => (
           left: 'calc(50% - 100px)',
           width: '200px',
         }}
+        alt={alt}
       />
     )}
   />

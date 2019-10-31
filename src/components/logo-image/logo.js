@@ -1,9 +1,9 @@
 import React from 'react';
-import FooterImage from './footer-image';
+import LogoImage from './logo-image';
 import { css } from '@emotion/core';
 import { Link } from 'gatsby';
 
-export const Footer = () => (
+export const Logo = ({ alt }) => (
   <div
     css={css`
       width: 100%;
@@ -13,7 +13,7 @@ export const Footer = () => (
     `}
   >
     <Link to="/">
-      <FooterImage />
+      <LogoImage alt={alt} />
     </Link>
   </div>
 );

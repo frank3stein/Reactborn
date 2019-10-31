@@ -4,6 +4,7 @@ import MenuItems from './menu';
 import { css } from '@emotion/core';
 import Facebook from '../../images/social-icons/facebook.svg';
 import Instagram from '../../images/social-icons/instagram.svg';
+import { Logo } from '../logo-image/logo';
 // import Twitter from '../../images/social-icons/twitter.svg';
 // import styled from '@emotion/styled';
 // import InstagramLogo from '../../images/social-icons/instagram-logo.png';
@@ -103,7 +104,8 @@ const Header = ({ siteTitle, instagram, facebook, twitter }) => (
           text-decoration: none;
         `}
       >
-        {siteTitle}
+        <Logo alt={siteTitle} />
+        {/* {siteTitle} */}
       </Link>
     </h1>
     <MenuItems />

@@ -1,9 +1,9 @@
 import React from 'react';
+import Layout from '../components/layout';
 
 const About = () => (
-  <>
-    <h1>WaterBorn Bali</h1>
-    <p>
+  <Layout>
+    <p style={{ marginTop: '1rem' }}>
       Located in the heart of the most famous area of Canggu - Batu Bolong, our
       hostel is 15 minutes away from the beach by foot. Our villa has
       accommodation types for every traveler: a 5-bed dorm (with single beds -
@@ -34,5 +34,7 @@ const About = () => (
       beauty is usually found not inside, but around the hostel, playing in the
       street and hanging out with neighbourhood dogs.
     </p>
-  </>
+  </Layout>
 );
+
+export default About;

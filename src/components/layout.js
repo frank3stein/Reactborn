@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
-import { Footer } from './footer/footer';
+import { Logo } from './logo-image/logo';
 import Header from './header/header';
 import './variables.css';
 import BackgroundImage from './backgroundImage';
@@ -70,7 +70,7 @@ const Layout = ({ children, index }) => {
           >
             {children}
           </main>
-          <Footer />
+          <Logo />
         </section>
       )}
     />
