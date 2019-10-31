@@ -1,6 +1,10 @@
 :root {
-	--mainColor: #3cb4e9;
-	--secondaryColor: #fca77d;
-	--baliColor: #fec5aa;
-	--linkHover: rebeccapurple;
+  --mainColor: #3cb4e9;
+  --mainColor-light: #7be6ff;
+  --mainColor-dark: #0084b7;
+  --secondaryColor: #fca77d;
+  --secondaryColor-light: #ffd9ad;
+  --secondaryColor-dark: #c67850;
+  --baliColor: #fec5aa;
+  --linkHover: rebeccapurple;
 }

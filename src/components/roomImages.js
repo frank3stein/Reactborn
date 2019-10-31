@@ -4,16 +4,9 @@ import ImageCarousel from './image-carousel';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
-const roomNames = ['Dorm', 'King', 'Queen', 'Garden', 'Shared', 'Patio'];
+const roomNames = ['Dorm', 'King', 'Queen', 'Shared', 'Patio', 'Garden'];
 const RoomButton = styled('button')`
-  min-height: 40px;
-  min-width: 40px;
-  &:hover {
-    color: red;
-  }
-  &:active {
-    color: yellow;
-  }
+  /* Room buttons can be changed if wanted */
 `;
 const roomsList = roomNames.map(room => (
   <RoomButton key={room}>{room}</RoomButton>
@@ -98,31 +91,39 @@ const RoomImages = () => {
     }
   `);
   const [room, setRoom] = useState(dormImages); //Default state is set here
+  const [roomName, setRoomName] = useState('Dorm');
   const whichRoom = event => {
-    switch (event.target.innerText) {
+    const innerText = event.target.innerText;
+    switch (innerText) {
       case 'Dorm':
-        console.log(event.target.innerText, room);
+        console.log(innerText);
         setRoom(dormImages);
+        setRoomName(innerText);
         break;
       case 'King':
         setRoom(kingImages);
-        console.log(event.target.innerText);
+        setRoomName(innerText);
+        console.log(innerText);
         break;
       case 'Queen':
         setRoom(queenImages);
-        console.log(event.target.innerText);
+        setRoomName(innerText);
+        console.log(innerText);
         break;
       case 'Garden':
         setRoom(gardenImages);
-        console.log(event.target.innerText);
+        setRoomName(innerText);
+        console.log(innerText);
         break;
       case 'Shared':
         setRoom(sharedImages);
-        console.log(event.target.innerText);
+        setRoomName(innerText);
+        console.log(innerText);
         break;
       case 'Patio':
         setRoom(patioImages);
-        console.log(event.target.innerText);
+        setRoomName(innerText);
+        console.log(innerText);
         break;
       default:
         console.log('Does not work, try again.');
@@ -133,8 +134,16 @@ const RoomImages = () => {
       <ul onClick={whichRoom} css={css``}>
         {roomsList}
       </ul>
-      <p>Room Images</p>
       <ImageCarousel images={room} />
+      <p
+        css={css`
+          text-align: center;
+          font-size: 1.5rem;
+          margin-top: 1rem;
+        `}
+      >
+        {roomName === `Garden` ? roomName : roomName + ' room'}
+      </p>
     </>
   );
 };

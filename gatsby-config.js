@@ -1,7 +1,10 @@
 module.exports = {
   pathPrefix: '/Reactborn',
   siteMetadata: {
-    title: 'Waterborn',
+    title: 'Waterborn Bali',
+    instagram: 'https://www.instagram.com/waterbornbali/',
+    twitter: '',
+    facebook: 'https://www.facebook.com/waterbornbali/',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -11,6 +14,14 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images/`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        // rule: {
+        //   include: `${__dirname}/src/images/social-icons/`, // See below to configure properly
+        // },
       },
     },
     'gatsby-transformer-sharp',

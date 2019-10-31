@@ -16,12 +16,25 @@ const Layout = ({ children, index }) => {
           site {
             siteMetadata {
               title
+              instagram
+              facebook
+              twitter
             }
           }
         }
       `}
       render={data => (
-        <>
+        <section
+          css={css`
+            position: relative;
+            height: 100%;
+            height: 100vh;
+            /* display: flex; */
+            /* flex-wrap: wrap; */
+            /* flex-direction: column; */
+            /* justify-content: space-around; */
+          `}
+        >
           <Helmet
             title={data.site.siteMetadata.title}
             meta={[
@@ -31,11 +44,21 @@ const Layout = ({ children, index }) => {
           />
           {index === true ? (
             <>
-              <Header siteTitle={data.site.siteMetadata.title} />
+              <Header
+                siteTitle={data.site.siteMetadata.title}
+                instagram={data.site.siteMetadata.instagram}
+                facebook={data.site.siteMetadata.facebook}
+                twitter={data.site.siteMetadata.twitter}
+              />
               <BackgroundImage />
             </>
           ) : (
-            <Header siteTitle={data.site.siteMetadata.title} />
+            <Header
+              siteTitle={data.site.siteMetadata.title}
+              instagram={data.site.siteMetadata.instagram}
+              facebook={data.site.siteMetadata.facebook}
+              twitter={data.site.siteMetadata.twitter}
+            />
           )}
           <main
             css={css`
@@ -48,7 +71,7 @@ const Layout = ({ children, index }) => {
             {children}
           </main>
           <Footer />
-        </>
+        </section>
       )}
     />
   );
