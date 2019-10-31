@@ -69,7 +69,7 @@ nav ul {
       display: block;
       &:hover {
         color: var(--secondaryColor);
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: var(--mainColor-dark);
       }
     }
   }
