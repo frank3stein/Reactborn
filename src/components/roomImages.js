@@ -4,7 +4,7 @@ import ImageCarousel from './image-carousel';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 
-const roomNames = ['Dorm', 'King', 'Queen', 'Shared', 'Patio', 'Garden'];
+const roomNames = ['King', 'Queen', 'Shared', 'Dorm', 'Patio', 'Garden'];
 const RoomButton = styled('button')`
   /* Room buttons can be changed if wanted */
 `;
