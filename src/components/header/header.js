@@ -4,8 +4,8 @@ import MenuItems from './menu';
 import { css } from '@emotion/core';
 import Facebook from '../../images/social-icons/facebook.svg';
 import Instagram from '../../images/social-icons/instagram.svg';
-import Twitter from '../../images/social-icons/twitter.svg';
-import styled from '@emotion/styled';
+// import Twitter from '../../images/social-icons/twitter.svg';
+// import styled from '@emotion/styled';
 // import InstagramLogo from '../../images/social-icons/instagram-logo.png';
 
 // const socialLi = styled('li')`
@@ -79,7 +79,7 @@ const Header = ({ siteTitle, instagram, facebook, twitter }) => (
         />
       </a>
 
-      <a href={twitter} target="_blank">
+      {/* <a href={twitter} target="_blank">
         <Twitter
           css={css`
             &:hover {
@@ -87,7 +87,7 @@ const Header = ({ siteTitle, instagram, facebook, twitter }) => (
             }
           `}
         />
-      </a>
+      </a> */}
     </nav>
     {/* <Instagram />
 
