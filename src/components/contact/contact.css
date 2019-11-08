@@ -68,6 +68,17 @@ select {
   width: 400px;
 }
 
+@media only screen and (max-width: 435px) {
+  input[type='email'],
+  input[type='text'],
+  input[type='number'],
+  textarea,
+  select {
+    width: 95%;
+    width: 95vw;
+  }
+}
+
 textarea {
   -webkit-appearance: none;
   -moz-appearance: none;

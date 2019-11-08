@@ -1,28 +1,26 @@
 import React from 'react';
 import { Link } from 'gatsby';
-
+import { css } from '@emotion/core';
 import Layout from '../components/layout';
 
 const BookingPage = () => (
   <Layout>
     <h1>Booking</h1>
     <div
-      style={
-        {
-          // display: 'flex',
-          // alignItems: 'strech',
-        }
-      }
+      css={css`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+      `}
     >
       <iframe
         title="Booking"
         src="https://myallocator.com/booknow/sG2YDi-EJX0hkcHZmwL3VA"
-        style={{
-          flexGrow: '1',
-          width: '410px',
-          height: '520px',
-          border: 'none',
-        }}
+        css={css`
+          width: 410px;
+          height: 520px;
+        `}
         frameBorder="0"
         allowtransparency="true"
       />

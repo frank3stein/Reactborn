@@ -1,7 +1,6 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import BackgroundImage from 'gatsby-background-image';
-import BookingButton from './booknow';
 
 const backgroundImage = ({ className }) => {
   const { image } = useStaticQuery(graphql`
@@ -31,14 +30,7 @@ const backgroundImage = ({ className }) => {
         height: '100vh',
       }}
       fluid={imageData}
-    >
-      {/* <BookingButton
-        style={{
-          position: 'absolute',
-          bottom: '0',
-        }}
-      /> */}
-    </BackgroundImage>
+    ></BackgroundImage>
   );
 };
 

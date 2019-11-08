@@ -66,6 +66,7 @@ class ImageCarousel extends React.Component {
         css={css`
           position: relative;
           flex-grow: 1;
+          background: var(--mainColor);
         `}
       >
         <Img

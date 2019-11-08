@@ -6,7 +6,8 @@ import { Link } from 'gatsby';
 export const Logo = ({ alt }) => (
   <div
     css={css`
-      width: 100%;
+      /* position: fixed; */
+      /* width: 100vw;s */
       background: #3cb4e9;
       bottom: 0;
       left: 0;

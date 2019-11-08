@@ -35,7 +35,7 @@ const Header = ({ siteTitle, instagram, facebook, twitter }) => (
     <nav
       css={css`
         position: absolute;
-        top: 0;
+        top: 16px;
         left: 0;
         & a {
           color: inherit; /* blue colors for links too */

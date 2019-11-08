@@ -51,5 +51,13 @@ module.exports = {
         username: `waterbornbali`,
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-recaptcha`,
+    //   options: {
+    //     async: true,
+    //     defer: true,
+    //     args: `?onload=onloadCallback&render=explicit`,
+    //   },
+    // },
   ],
 };

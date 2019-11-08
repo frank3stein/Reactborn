@@ -8,7 +8,7 @@ import './variables.css';
 import BackgroundImage from './backgroundImage';
 import { css } from '@emotion/core';
 
-const Layout = ({ children, index }) => {
+const Layout = ({ children, page }) => {
   return (
     <StaticQuery
       query={graphql`
@@ -26,13 +26,18 @@ const Layout = ({ children, index }) => {
       render={data => (
         <section
           css={css`
+            display: flex;
             position: relative;
-            height: 100%;
-            height: 100vh;
+            flex-direction: column;
+            /* height: 100vh; */
+            /* overflow-x: hidden; */
+            /* flex-grow: 1; */
+            /* height: 100%; */
+            /* height: 100vh; */
             /* display: flex; */
             /* flex-wrap: wrap; */
             /* flex-direction: column; */
-            /* justify-content: space-around; */
+            /* justify-content: space-between; */
           `}
         >
           <Helmet
@@ -42,7 +47,8 @@ const Layout = ({ children, index }) => {
               { name: 'keywords', content: 'Surfing, Bali, hostel, Surf Camp' },
             ]}
           />
-          {index === true ? (
+
+          {page === 'index' ? (
             <>
               <Header
                 siteTitle={data.site.siteMetadata.title}
@@ -60,10 +66,12 @@ const Layout = ({ children, index }) => {
               twitter={data.site.siteMetadata.twitter}
             />
           )}
+
           <main
             css={css`
+              /* display: flex;
+              flex-direction: column; */
               text-align: center;
-              padding: 1rem;
               max-width: 960px;
               margin: 0 auto;
             `}

@@ -1,11 +1,10 @@
-import React from 'react';
-import { Formik, Form, useField } from 'formik';
+import React, { useEffect, useState } from 'react';
+import { Formik, Form, useFormikContext, useField } from 'formik';
 import * as Yup from 'yup';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
-// import './styles.css';
-// import './custom.css';
 import './contact.css';
+import { load } from 'recaptcha-v3';
 import axios from 'axios';
 
 const MyTextInput = ({ label, ...props }) => {
@@ -33,31 +32,11 @@ const MyTextArea = ({ label, ...props }) => {
 
       <textarea className="text-input" {...field} {...props} />
       {meta.touched && meta.error ? (
-        <StyledErrorMessage cxlassName="error">{meta.error}</StyledErrorMessage>
+        <StyledErrorMessage className="error">{meta.error}</StyledErrorMessage>
       ) : null}
     </>
   );
 };
-
-// const MyCheckbox = ({ children, ...props }) => {
-//   const [field, meta] = useField({ ...props, type: 'checkbox' });
-//   return (
-//     <>
-//       <label className="checkbox">
-//         <input {...field} {...props} type="checkbox" />
-//         {children}
-//       </label>
-//       {meta.touched && meta.error ? (
-//         <div className="error">{meta.error}</div>
-//       ) : null}
-//     </>
-//   );
-// };
-
-// Styled components ....
-// const StyledSelect = styled.select`
-//   color: var(--blue);
-// `;
 
 const StyledErrorMessage = styled.div`
   font-size: 1rem;
@@ -73,23 +52,19 @@ const StyledErrorMessage = styled.div`
 const StyledLabel = styled.label`
   margin-top: 1rem;
 `;
-
-// const MySelect = ({ label, ...props }) => {
-//   // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
-//   // which we can spread on <input> and alse replace ErrorMessage entirely.
-//   const [field, meta] = useField(props);
-//   return (
-//     <>
-//       <StyledLabel htmlFor={props.id || props.name}>{label}</StyledLabel>
-//       <StyledSelect {...field} {...props} />
-//       {meta.touched && meta.error ? (
-//         <StyledErrorMessage>{meta.error}</StyledErrorMessage>
-//       ) : null}
-//     </>
-//   );
-// };
-
-// And now we can use these
+const Recaptcha = () => {
+  const { values } = useFormikContext();
+  useEffect(() => {
+    async function recaptcha() {
+      const recaptcha = await load('6Lf53r8UAAAAAJxXtGRtNysTSsTfnc86ih_vHYXr');
+      const token = await recaptcha.execute();
+      values.recaptcha = token;
+    }
+    recaptcha();
+  }, [values.recaptcha]);
+  return null;
+};
+// // And now we can use these
 const ContactForm = () => {
   return (
     <>
@@ -98,6 +73,7 @@ const ContactForm = () => {
         css={css`
           display: flex;
           justify-content: center;
+          align-items: center;
         `}
       >
         <Formik
@@ -105,8 +81,8 @@ const ContactForm = () => {
             firstName: '',
             lastName: '',
             email: '',
-            acceptedTerms: false, // added for our checkbox
-            jobType: '', // added for our select
+            message: '',
+            recaptcha: '',
           }}
           validationSchema={Yup.object({
             firstName: Yup.string()
@@ -118,24 +94,18 @@ const ContactForm = () => {
             email: Yup.string()
               .email('Invalid email addresss`')
               .required('Required'),
-            message: Yup.string().required('Required'),
-            //   acceptedTerms: Yup.boolean()
-            //     .required('Required')
-            //     .oneOf([true], 'You must accept the terms and conditions.'),
-            //   jobType: Yup.string()
-            // specify the set of valid values for job type
-            // @see http://bit.ly/yup-mixed-oneOf
-            // .oneOf(
-            //   ['designer', 'development', 'product', 'other'],
-            //   'Invalid Job Type'
-            // )
-            // .required('Required'),
+            message: Yup.string()
+              .min(2)
+              .required('Required'),
+            recaptcha: Yup.string()
+              .min(1)
+              .required('ReCaptcha is required to send your request.'),
           })}
           onSubmit={(values, { setSubmitting }) => {
-            //   setTimeout(() => {
-            //     alert(JSON.stringify(values, null, 2));
-            //     setSubmitting(false);
-            //   }, 400);
+            setSubmitting(true);
+            // const payload = { ...values, recaptcha: token };
+            // setValues(payload);
+            // alert(JSON.stringify(values, null, 2));
             axios
               .post(
                 'https://h3qmp33q4d.execute-api.eu-west-1.amazonaws.com/prod/contact',
@@ -178,18 +148,15 @@ const ContactForm = () => {
               component="textarea"
               placeholder="Enter your message here and we will get back to you as soon as possible. Have a great day !"
             />
-            {/* <MySelect label="Job Type" name="jobType">
-            <option value="">Select a job type</option>
-            <option value="designer">Designer</option>
-            <option value="development">Developer</option>
-            <option value="product">Product Manager</option>
-            <option value="other">Other</option>
-          </MySelect>
-          <MyCheckbox name="acceptedTerms">
-            I accept the terms and conditions
-          </MyCheckbox> */}
-
-            <button type="submit">Submit</button>
+            <Recaptcha name="recaptcha" />
+            <button
+              type="submit"
+              css={css`
+                margin-top: 1rem;
+              `}
+            >
+              Submit
+            </button>
           </Form>
         </Formik>
       </div>
