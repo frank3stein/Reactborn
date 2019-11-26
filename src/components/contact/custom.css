@@ -17,3 +17,7 @@ label.checkbox {
 button[type='submit'] {
   margin-top: 1rem;
 }
+/* Removing the Recaptcha */
+.grecaptcha-badge {
+  visibility: hidden;
+}

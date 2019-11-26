@@ -33,7 +33,7 @@ const Layout = ({ children, page }) => {
             /* overflow-x: hidden; */
             /* flex-grow: 1; */
             /* height: 100%; */
-            /* height: 100vh; */
+            min-height: 100vh;
             /* display: flex; */
             /* flex-wrap: wrap; */
             /* flex-direction: column; */
@@ -74,6 +74,7 @@ const Layout = ({ children, page }) => {
               text-align: center;
               max-width: 960px;
               margin: 0 auto;
+              flex-grow: 1;
             `}
           >
             {children}

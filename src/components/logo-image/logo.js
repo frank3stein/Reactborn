@@ -7,10 +7,12 @@ export const Logo = ({ alt }) => (
   <div
     css={css`
       /* position: fixed; */
-      /* width: 100vw;s */
+      /* width: 100vw; */
+      /* position: absolute; */
+
       background: #3cb4e9;
-      bottom: 0;
-      left: 0;
+      /* bottom: 0; */
+      /* left: 0; */
     `}
   >
     <Link to="/">

@@ -6,6 +6,7 @@ import { css } from '@emotion/core';
 import './contact.css';
 import { load } from 'recaptcha-v3';
 import axios from 'axios';
+import { Notification } from './notification/notification';
 
 const MyTextInput = ({ label, ...props }) => {
   // useField() returns [formik.getFieldProps(), formik.getFieldMeta()]
@@ -56,7 +57,9 @@ const Recaptcha = () => {
   const { values } = useFormikContext();
   useEffect(() => {
     async function recaptcha() {
-      const recaptcha = await load('6Lf53r8UAAAAAJxXtGRtNysTSsTfnc86ih_vHYXr');
+      const recaptcha = await load('6Lf53r8UAAAAAJxXtGRtNysTSsTfnc86ih_vHYXr', {
+        autoHideBadge: true,
+      });
       const token = await recaptcha.execute();
       values.recaptcha = token;
     }
@@ -66,6 +69,14 @@ const Recaptcha = () => {
 };
 // // And now we can use these
 const ContactForm = () => {
+  const [isHidden, setIsHidden] = useState(true);
+  useEffect(() => {
+    const timeOut = setTimeout(() => setIsHidden(true), 3500);
+    return () => {
+      // console.log('Cleaning before rerender');
+      clearTimeout(timeOut);
+    };
+  }, [isHidden]);
   return (
     <>
       <h1>Contact</h1>
@@ -101,7 +112,7 @@ const ContactForm = () => {
               .min(1)
               .required('ReCaptcha is required to send your request.'),
           })}
-          onSubmit={(values, { setSubmitting }) => {
+          onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
             // const payload = { ...values, recaptcha: token };
             // setValues(payload);
@@ -117,7 +128,14 @@ const ContactForm = () => {
                   body: values,
                 }
               )
-              .then(response => console.log('Axios back ', response))
+              .then(response => {
+                // console.log('Axios back ', response);
+                // alert(
+                //   'We have received your message. We will get back to you as soon as possible.'
+                // ); // this is inside notification component
+                setIsHidden(false);
+                resetForm();
+              })
               .catch(err => console.log(err));
             setSubmitting(false);
           }}
@@ -157,6 +175,7 @@ const ContactForm = () => {
             >
               Submit
             </button>
+            <Notification isHidden={isHidden} setIsHidden={setIsHidden} />
           </Form>
         </Formik>
       </div>
