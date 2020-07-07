@@ -7,7 +7,7 @@ The site's static content is served through AWS Cloudfront CDN, as visitors come
 
 ## Performance
 
-I have tested the site using the new web.dev/measure initiative started by Google. 
+I have tested the site using the new web.dev/measure initiative by Google. 
 
 ![Lighthouse Metrics](./lighthouse.png)
 
